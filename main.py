@@ -122,6 +122,11 @@ def parse_option():
         opt.n_cls = 200
         opt.cls_per_task = 20
         opt.size = 64
+    elif opt.dataset == "path":
+        #assume UCMercered:
+        opt.n_cls = 21
+        opt.cls_per_task = 2
+        opt.size = 64
     else:
         pass
 
