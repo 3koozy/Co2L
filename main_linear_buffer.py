@@ -61,8 +61,9 @@ def parse_option():
     # model dataset
     parser.add_argument('--model', type=str, default='resnet18')
     parser.add_argument('--dataset', type=str, default='cifar10',
-                        choices=['cifar10', 'tiny-imagenet'], help='dataset')
+                        choices=['cifar10', 'tiny-imagenet','path'], help='dataset')
     parser.add_argument('--size', type=int, default=32)
+     parser.add_argument('--data_folder', type=str, default=None, help='path to custom dataset')
 
     # other setting
     parser.add_argument('--cosine', action='store_true',
@@ -114,10 +115,15 @@ def parse_option():
         opt.n_cls = 200
         opt.cls_per_task = 20
         opt.size = 64
+    elif opt.dataset == "path":
+        #assume UCMercered:
+        opt.n_cls = 21
+        opt.cls_per_task = 2
+        opt.size = 64
     else:
         raise ValueError('dataset not supported: {}'.format(opt.dataset))
 
-
+    
 
     opt.origin_ckpt = opt.ckpt
     opt.ckpt = os.path.join(opt.ckpt, 'last_random_{target_task}.pth'.format(target_task=opt.target_task))
