@@ -63,7 +63,7 @@ def parse_option():
     parser.add_argument('--dataset', type=str, default='cifar10',
                         choices=['cifar10', 'tiny-imagenet','path'], help='dataset')
     parser.add_argument('--size', type=int, default=32)
-     parser.add_argument('--data_folder', type=str, default=None, help='path to custom dataset')
+    parser.add_argument('--data_folder', type=str, default=None, help='path to custom dataset')
 
     # other setting
     parser.add_argument('--cosine', action='store_true',
